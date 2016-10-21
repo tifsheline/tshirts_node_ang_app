@@ -2,21 +2,23 @@ var
   express = require('express'),
   app = express(),
   logger = require('morgan'),
+  tshirtRoutes = require('./routes/tshirts.js')
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
   PORT = process.env.PORT || 3000
 
 //connection to mongo db:
-var mongoConnectionString = 'mongod://localhose/tshirts_node_ang_app'
+var mongoConnectionString = 'mongodb://localhost/tshirts_node_ang_app'
 
 mongoose.connect(mongoConnectionString, function(err) {
-    console.log(err || "Connected to MOngoDB!")
+    console.log(err || "Connected to MongoDB!")
 })
 
 //middleware
 
 app.use(bodyParser.json())
 app.use(express.static('public'))
+app.use('/', tshirtRoutes)
 
 app.listen(PORT, function(err) {
   console.log(err || "Server is running on " + PORT)
