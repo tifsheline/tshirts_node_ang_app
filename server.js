@@ -18,7 +18,10 @@ mongoose.connect(mongoConnectionString, function(err) {
 
 app.use(bodyParser.json())
 app.use(express.static('public'))
-app.use('/', tshirtRoutes)
+app.use('/api', tshirtRoutes)
+app.use('/', function(req, res) {
+  res.sendFile('index.html', {root: __dirname})
+})
 
 app.listen(PORT, function(err) {
   console.log(err || "Server is running on " + PORT)

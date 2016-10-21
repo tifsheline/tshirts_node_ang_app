@@ -3,9 +3,9 @@ var
   tshirtRouter = express.Router(),
   tshirtController = require('../controllers/tshirts.js')
 
-tshirtRouter.get('/api', tshirtController.index)
-tshirtRouter.post('/api', tshirtController.create)
-tshirtRouter.get('/api/:id', tshirtController.showTshirt)
-tshirtRouter.delete('/api/:id', tshirtController.destroyTshirt)
+tshirtRouter.get('/', tshirtController.index)
+tshirtRouter.post('/', tshirtController.create)
+tshirtRouter.get('/:id', tshirtController.showTshirt)
+tshirtRouter.delete('/:id', tshirtController.destroyTshirt)
 
 module.exports = tshirtRouter
